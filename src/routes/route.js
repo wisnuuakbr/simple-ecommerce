@@ -25,4 +25,8 @@ router.post('/cart', authMiddleware, cartController.addToCart.bind(cartControlle
 router.get('/cart', authMiddleware, cartController.getCart.bind(cartController));
 router.put('/cart/:id', authMiddleware, cartController.updateCart.bind(cartController));
 
+// Order route
+router.post('/order', authMiddleware, orderController.createOrder.bind(orderController));
+router.get('/order', authMiddleware, orderController.getOrderHistory.bind(orderController));
+
 module.exports = router;
