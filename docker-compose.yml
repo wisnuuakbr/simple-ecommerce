@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+    app:
+        build: .
+        container_name: e-commerce_app
+        restart: always
+        ports:
+            - "3000:3000"
+        volumes:
+            - .:/app
+        depends_on:
+            db:
+                condition: service_healthy
+        networks:
+            - e-commerce
+
+    db:
+        image: mysql:8.0.30
+        container_name: mysql
+        restart: always
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+            - MYSQL_DATABASE=$DB_DATABASE
+            - MYSQL_USER=$DB_USER
+            - MYSQL_PASSWORD=$DB_PASSWORD
+        volumes:
+            - db-data:/var/lib/mysql
+        networks:
+            - e-commerce
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+volumes:
+    db-data:
+
+networks:
+    e-commerce:
+        driver: bridge
