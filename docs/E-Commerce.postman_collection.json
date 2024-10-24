@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "60e3bd11-1f60-4184-909c-617174617930",
+		"name": "E-Commerce",
+		"description": "E-Commerce test API collection is designed to provide a comprehensive set of endpoints for a simple e-commerce platform. This API allows users to perform essential operations such as user registration, login, product management, cart operations, and order processing. Each endpoint is designed to follow RESTful principles, ensuring ease of use and intuitive interaction.\n\n## Usage\n\nTo use this, make requests to the specified endpoints using your preferred HTTP client or tool (e.g., Postman, curl). Ensure that you have the necessary headers and request bodies formatted correctly according to the provided descriptions.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11892859"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user_name\": \"wisnuakbara\",\r\n  \"user_mail\": \"wisnu@varx.co.id\",\r\n  \"user_pass\": \"wisnu123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						},
+						"description": "This endpoint allows new users to register for an account on the e-commerce platform. The request body should contain the user's details, including a valid email, password, and other required information."
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_mail\": \"wisnu@varx.co.id\",\r\n    \"user_pass\": \"wisnu123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						},
+						"description": "This endpoint allows registered users to log into the e-commerce platform by providing their email and password. Upon successful authentication, a JSON Web Token (JWT) is returned for the user to access authenticated routes."
+					},
+					"response": []
+				}
+			],
+			"description": "The **Auth** folder contains all components related to user authentication and authorization within the e-commerce platform. This module handles user registration, login, token generation, and session management. It ensures secure access to the API endpoints by implementing best practices for user authentication."
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "List Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/product?page=1&limit=5&order=ASC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"product"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "sortBy",
+									"value": "product_price",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "name",
+									"value": "Product 2",
+									"description": "search by name",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "cat 2",
+									"description": "search by category",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This endpoint allows users to retrieve a list of products available on the e-commerce platform. The products can be filtered, searched, or sorted based on certain criteria."
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/product/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"{id}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "This endpoint allows users to retrieve detailed information about a specific product by its ID."
+					},
+					"response": []
+				}
+			],
+			"description": "The **Product** folder contains all components related to product management within the e-commerce platform. This module is responsible for handling product information, including retrieving list of all products, and the detail information of the product. It ensures that users can browse available products and view detailed information about each item."
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Add Product To Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdhNWZjNmYyLWE5NzQtNDk2OS1hM2Y4LWUzYzgzYjcyNjdlOSIsImlhdCI6MTcyODA4OTM4MiwiZXhwIjoxNzI4MDkyOTgyfQ.fjZe3ouLmxUykOO6-UpdG8SKv1cHNPHs0bRtkcAfD84",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"1\",\r\n    \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						},
+						"description": "This endpoint allows users to add a product to their cart by specifying the product ID and quantity."
+					},
+					"response": []
+				},
+				{
+					"name": "List Cart",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdhNWZjNmYyLWE5NzQtNDk2OS1hM2Y4LWUzYzgzYjcyNjdlOSIsImlhdCI6MTcyODA4OTM4MiwiZXhwIjoxNzI4MDkyOTgyfQ.fjZe3ouLmxUykOO6-UpdG8SKv1cHNPHs0bRtkcAfD84",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						},
+						"description": "This endpoint allows users to retrieve the current contents of their shopping cart."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cart Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdhNWZjNmYyLWE5NzQtNDk2OS1hM2Y4LWUzYzgzYjcyNjdlOSIsImlhdCI6MTcyODA4OTM4MiwiZXhwIjoxNzI4MDkyOTgyfQ.fjZe3ouLmxUykOO6-UpdG8SKv1cHNPHs0bRtkcAfD84",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/cart/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"{id}"
+							]
+						},
+						"description": "This endpoint allows users to update the quantity of a specific product in their shopping cart by specifying the cart item ID."
+					},
+					"response": []
+				}
+			],
+			"description": "The **Cart** folder contains all components related to shopping cart functionality within the e-commerce platform. This module manages user interactions with their shopping cart, allowing them to add, update, and view products before proceeding to checkout."
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdhNWZjNmYyLWE5NzQtNDk2OS1hM2Y4LWUzYzgzYjcyNjdlOSIsImlhdCI6MTcyODA4OTM4MiwiZXhwIjoxNzI4MDkyOTgyfQ.fjZe3ouLmxUykOO6-UpdG8SKv1cHNPHs0bRtkcAfD84",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"order"
+							]
+						},
+						"description": "This endpoint allows users to create an order from the items in their cart. The cart items will be processed into an order, and the user will receive a summary of the order."
+					},
+					"response": []
+				},
+				{
+					"name": "Order History",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdhNWZjNmYyLWE5NzQtNDk2OS1hM2Y4LWUzYzgzYjcyNjdlOSIsImlhdCI6MTcyODA4OTM4MiwiZXhwIjoxNzI4MDkyOTgyfQ.fjZe3ouLmxUykOO6-UpdG8SKv1cHNPHs0bRtkcAfD84",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"order"
+							]
+						},
+						"description": "This endpoint allows users to retrieve their order history, including details about previous orders they have placed on the e-commerce platform."
+					},
+					"response": []
+				}
+			],
+			"description": "The **Order** folder contains all components related to order management within the e-commerce platform. This module handles the creation, retrieval, and management of user orders, ensuring that users can process their purchases and access their order history."
+		}
+	]
+}
