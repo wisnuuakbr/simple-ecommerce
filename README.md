@@ -25,11 +25,11 @@ Make sure the requirements above already install on your system.
 Clone the project to your directory and install the dependencies.
 
 ```bash
-$ git clone https://gitlab.com/wisnuakbara/e-commerce
+$ git clone https://github.com/wisnuakbara/simple-ecommerce
 ```
 
 ```bash
-$ cd e-commerce
+$ cd simple-ecommerce
 ```
 
 ```bash
