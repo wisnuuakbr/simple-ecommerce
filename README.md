@@ -79,19 +79,3 @@ _this will run server with nodemon enabled_
 ```bash
 $ npm run dev
 ```
-
-## Endpoints
-
-These are the endpoints we will use.
-
-| method | url                 | desc                                       |
-| ------ | ------------------- | ------------------------------------------ |
-| POST   | /api/v1/register    | Register a new user                        |
-| POST   | /api/v1/login       | Login an existing user                     |
-| GET    | /api/v1/product     | List all products                          |
-| GET    | /api/v1/product/:id | Get detailed product                       |
-| POST   | /api/v1/cart        | Add a product to the cart                  |
-| GET    | /api/v1/cart        | Get the contents of the cart               |
-| PUT    | /api/v1/cart/:id    | Update the quantity of an item in the cart |
-| POST   | /api/v1/order       | Create a new order from the cart           |
-| GET    | /api/v1/order       | Retrieve the order history of the user     |
