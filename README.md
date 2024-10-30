@@ -2,7 +2,9 @@
 
 A simple e-commerce backend service using :
 
-<p align="center"><a href="https://expressjs.com/" target="_blank"><img src="https://img.icons8.com/?size=100&id=kg46nzoJrmTR&format=png&color=000000" width="180"></a></p>
+<p align="center"><a href="https://expressjs.com/" target="_blank"><img src="https://img.icons8.com/?size=100&id=kg46nzoJrmTR&format=png&color=000000" width="180"></a></p>  
+
+_*nb:_ **_The structure and clean architecture in this project aren't perfect yet, but this is merely an approach to implementing Uncle Bob's clean architecture concept.  It will be updated if there are any changes in the future._**
 
 ## Requirements
 
