@@ -41,4 +41,6 @@ volumes:
 
 networks:
     e-commerce:
+        external: true
+        name: e-commerce
         driver: bridge
