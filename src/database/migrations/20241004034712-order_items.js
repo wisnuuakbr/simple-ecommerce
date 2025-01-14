@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('order_items', {
+        await queryInterface.createTable('Order_items', {
             id: {
                 type: Sequelize.BIGINT(20),
                 primaryKey: true,
